@@ -28,7 +28,6 @@
         <div class="leaflet-control coordinate"></div>
     </div>
 </body>
-
 </html>
 
 
@@ -54,15 +53,13 @@
                 TILE LAYER and WMS
     ================================================*/
     //osm layer
+
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
     osm.addTo(map);
     // map.addLayer(osm)
-
        //experiment
-
-       
        // end experiment
 
 
@@ -78,7 +75,7 @@
     //L.geoJSON(wm).addTo(map);
     var polygone = L.geoJSON(polygone,{
         style:{
-            fillColor:'green',
+            fillColor:'#89989c',
             fillOpacity:1,
         }
     }).addTo(map);
