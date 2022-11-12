@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Tutorial</title>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+      }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <div id="map">
+        <div class="leaflet-control coordinate"></div>
+    </div>
+</body>
+
+</html>
+
+
+
+ <script src="./data/map.js"></script> 
+<script src="./data/wm.js"></script> -->
+<script src="./data/polyGone.js"></script>
+<!-- leaflet js  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+<script>
+    // Map initialization 
+    var map = L.map('map').setView([23.6850, 90.3563], 10);
+   
+
+    // const cx = polygone.features[0].geometry.coordinates[0];
+    // const cy = polygone.features[0].geometry.coordinates[1];
+    // var map = L.map('map').setView([cx, cy], 2);
+  
+
+    /*==============================================
+                TILE LAYER and WMS
+    ================================================*/
+    //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    osm.addTo(map);
+    // map.addLayer(osm)
+
+       //experiment
+
+       
+       // end experiment
+
+
+
+    // marker
+    var singleMarker = L.marker([23.6850, 90.3563]);
+    var popup = singleMarker.bindPopup('This is Bangladesh'+ singleMarker.getLatLng()).openPopup();
+    popup.addTo(map);
+
+    //console.log(singleMarker.toGeoJSON());
+
+    // L.geoJSON(pointJson).addTo(map);
+    //L.geoJSON(wm).addTo(map);
+    var polygone = L.geoJSON(polygone,{
+        style:{
+            fillColor:'green',
+            fillOpacity:1,
+        }
+    }).addTo(map);
+    
+
+
+map.fitBounds(polygone.getBounds());
+
+
+</script>
+
